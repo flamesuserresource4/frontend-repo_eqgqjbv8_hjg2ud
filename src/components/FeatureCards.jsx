@@ -23,11 +23,11 @@ const features = [
 
 export default function FeatureCards() {
   return (
-    <section id="features" className="relative bg-black text-white">
+    <section id="features" className="relative bg-white text-slate-900">
       <div className="mx-auto max-w-7xl px-6 py-20">
         <div className="mb-10 text-center">
           <h2 className="text-3xl md:text-4xl font-bold">What makes it pop</h2>
-          <p className="mt-2 text-white/70">
+          <p className="mt-2 text-slate-600">
             Built for visual impact with smooth performance and delightful motion.
           </p>
         </div>
@@ -35,13 +35,13 @@ export default function FeatureCards() {
           {features.map((f) => (
             <div
               key={f.title}
-              className="group rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-lg transition hover:bg-white/10 hover:border-white/20"
+              className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md"
             >
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-white/10 text-white">
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 text-orange-600">
                 <f.icon className="h-6 w-6" />
               </div>
               <h3 className="text-lg font-semibold">{f.title}</h3>
-              <p className="mt-2 text-sm text-white/70">{f.description}</p>
+              <p className="mt-2 text-sm text-slate-600">{f.description}</p>
             </div>
           ))}
         </div>

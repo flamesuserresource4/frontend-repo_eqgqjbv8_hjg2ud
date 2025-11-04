@@ -6,7 +6,7 @@ export default function Hero() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Create gentle parallax for the overlay content
+  // Gentle parallax for the overlay content
   const translateTitleX = useTransform(mouseX, [0, 1], [10, -10]);
   const translateTitleY = useTransform(mouseY, [0, 1], [10, -10]);
   const translateSubY = useTransform(mouseY, [0, 1], [6, -6]);
@@ -14,7 +14,6 @@ export default function Hero() {
   useEffect(() => {
     const handleMove = (e) => {
       const { innerWidth, innerHeight } = window;
-      // Normalize to 0..1
       mouseX.set(e.clientX / innerWidth);
       mouseY.set(e.clientY / innerHeight);
     };
@@ -23,7 +22,7 @@ export default function Hero() {
   }, [mouseX, mouseY]);
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-black">
+    <section className="relative min-h-screen w-full overflow-hidden bg-white">
       {/* Spline full-cover background */}
       <div className="absolute inset-0">
         <Spline
@@ -32,20 +31,21 @@ export default function Hero() {
         />
       </div>
 
-      {/* Gradient overlays for readability (don't block interaction) */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/80 via-black/20 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-black via-black/20 to-transparent" />
+      {/* Lightening overlays for readability (don't block interaction) */}
+      <div className="pointer-events-none absolute inset-0 mix-blend-screen bg-[radial-gradient(ellipse_at_center,_rgba(255,200,120,0.22),_transparent_60%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white/70 via-white/30 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-white via-white/30 to-transparent" />
 
       {/* Content overlay */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 text-center text-white">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 text-center">
         <motion.h1
-          className="text-4xl md:text-6xl font-extrabold tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
+          className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 drop-shadow-[0_2px_10px_rgba(255,200,120,0.25)]"
           style={{ x: translateTitleX, y: translateTitleY }}
         >
           Haunting Parallax Mountain
         </motion.h1>
         <motion.p
-          className="mt-4 max-w-2xl text-base md:text-lg text-white/85"
+          className="mt-4 max-w-2xl text-base md:text-lg text-slate-700"
           style={{ y: translateSubY }}
         >
           An atmospheric hero with an orange moon drifting behind a mountain. Move your mouse and watch the light and moon dance for an immersive effect.
@@ -54,13 +54,13 @@ export default function Hero() {
         <div className="mt-8 flex flex-col sm:flex-row items-center gap-3">
           <a
             href="#features"
-            className="inline-flex items-center justify-center rounded-full bg-white text-black px-6 py-3 font-medium shadow/50 shadow-black/40 hover:shadow-black/60 transition shadow"
+            className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-amber-400 to-orange-500 text-white px-6 py-3 font-medium shadow-md shadow-orange-500/30 hover:shadow-orange-500/50 transition"
           >
             Explore Features
           </a>
           <a
             href="#about"
-            className="inline-flex items-center justify-center rounded-full bg-white/10 text-white px-6 py-3 font-medium backdrop-blur-md ring-1 ring-white/20 hover:bg-white/15 transition"
+            className="inline-flex items-center justify-center rounded-full bg-white/80 text-slate-900 px-6 py-3 font-medium backdrop-blur ring-1 ring-slate-200 hover:bg-white"
           >
             Learn More
           </a>
